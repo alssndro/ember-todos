@@ -73,5 +73,12 @@ Todos.TodoController = Ember.ObjectController.extend({
         todo.save();
     }
   },
-  isEditing: false
+  isEditing: false,
+
+  isUrgent: function() {
+    var title = this.get('model').get('title');
+    var urgentTest = new RegExp(/\[urgent\]/);
+
+    return title.match(urgentTest);
+  }.property('model.title')
 });

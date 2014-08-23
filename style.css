@@ -412,3 +412,7 @@ label[for='toggle-all'] {
 .hidden{
 	display:none;
 }
+
+.urgent {
+	color: #B86161;
+}
