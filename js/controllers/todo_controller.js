@@ -33,7 +33,8 @@
 // 
 Todos.TodoController = Ember.ObjectController.extend({
   // The isCompleted property is called from the template to display the current state of the todo
-  isCompleted: function(key, value) { // key is the property name, in this case 'isCompleted'
+  isCompleted: function(key, value) { // <-- Define key/value parameters when we might  want to not only get but also SET the value of a property
+  // key is the property name, in this case 'isCompleted'
     var model = this.get('model'); // returns the actual model
 
     // If value is undefined, this property is being used as a getter, so just
@@ -50,7 +51,9 @@ Todos.TodoController = Ember.ObjectController.extend({
     }
   }.property('model.isCompleted'), // Denotes a computed property, which basically means we 
   // can declare a function as a property. Then we can use it the same way as any other
-  // normal, static property
+  // normal, static property (such as 'isEditing'). It also caches the property.
+  // We pass in other properties it is dependent on, as this way ember knows when to force
+  // the cached result to be update if the dependencies are modified
   actions: {
     editTodo: function() {
       this.set('isEditing', true);

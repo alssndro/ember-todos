@@ -15,7 +15,9 @@
 
         <section id="main">
           {{outlet}}
-          <input type="checkbox" id="toggle-all">
+          {{!-- The check HTML attribute is set to true or false depending on the
+          return value of the 'allAreDone' property --}}
+          {{input type="checkbox" id="toggle-all" checked=allAreDone}}
         </section>
 
         <footer id="footer">
@@ -24,15 +26,15 @@
           </span>
           <ul id="filters">
             <li>
-            {{!-- No need to create a new 'all' route like active and completed, since
-            the index route already behaves as we want it to, so re-use it --}}
-            {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
+              {{!-- No need to create a new 'all' route like active and completed, since
+              the index route already behaves as we want it to, so re-use it --}}
+              {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
             </li>
             <li>
               {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
             </li>
             <li>
-            {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
+              {{#link-to "todos.completed" activeClass="selected"}}Completed{{/link-to}}
             </li>
           </ul>
           {{#if hasCompleted}}
@@ -65,7 +67,8 @@
     <script src="js/libs/handlebars-1.0.0.js"></script>
     <script src="js/libs/ember.js"></script>
     <script src="js/libs/ember-data.js"></script>
-    
+    <script src="js/libs/localstorage_adapter.js"></script> <!--  Required for localstorage -->
+
     <!--  The app itself -->
     <script src="js/application.js"></script>
     <script src="js/router.js"></script>
